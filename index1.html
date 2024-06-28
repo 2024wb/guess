@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Joke Generator</title>
+    <style>
+        div {
+            line-height: 2.5;         
+        }
+    </style>
+</head>
+<body>
+    <div>
+        请输入自定义的名字：&nbsp;<input type="text" id="nameInput">
+        <br>
+        公制<input type="radio" name="unit">美制<input type="radio" name="unit">
+        <br>
+        <button id="jokeButton">随机生成笑话</button>
+        <p id="jokeOutput"></p>
+    </div>
+
+    <script>
+        window.onload = function() {
+            var nameInput = document.getElementById('nameInput');
+            var jokeButton = document.getElementById('jokeButton');
+            var jokeOutput = document.getElementById('jokeOutput');
+
+            jokeButton.addEventListener('click', function() {
+                var users = ['小明', '小红', '小李', '小张'];
+                var place = ['学校', '超市', '图书馆', '游乐园'];
+                var action = ['跳舞', '唱歌', '游泳', '滑冰'];
+
+                var selectedUser = nameInput.value || users[Math.floor(Math.random() * users.length)];
+                var selectedPlace = place[Math.floor(Math.random() * place.length)];
+                var selectedAction = action[Math.floor(Math.random() * action.length)];
+                var temperature = Math.floor(Math.random() * 30);
+
+                var joke = `今天气温${temperature}摄氏度，${selectedUser}出门散步，当走到${selectedPlace}门口，突然就${selectedAction}，人们都惊呆了，${selectedUser}全程目睹没有慌张，因为${selectedUser}是一个憨憨的小学生。`;
+                
+                jokeOutput.textContent = joke;
+            });
+        };
+    </script>
+</body>
+</html>
